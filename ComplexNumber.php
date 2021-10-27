@@ -20,13 +20,10 @@ class ComplexNumber
 
     public function __toString(): string
     {
-        $real = (float)$this->real;
-        $imaginary = (float)$this->imaginary;
-
         return join('', [
-                $real != 0 || $imaginary == 0 ? $real : '',
-                $imaginary > 0 && $real != 0 ? '+' : '',
-                $imaginary != 0 ? $imaginary . 'i' : ''
+                $this->real != 0 || $this->imaginary == 0 ? $this->real : '',
+                $this->imaginary > 0 && $this->real != 0 ? '+' : '',
+                $this->imaginary != 0 ? $this->imaginary . 'i' : ''
         ]);
     }
 
@@ -46,7 +43,6 @@ class ComplexNumber
         );
     }
 
-    //(a + bi) · (c + di) = (ac – bd) + (ad + bc)i
     public function multiple(ComplexNumber $number): ComplexNumber
     {
         return new ComplexNumber(
